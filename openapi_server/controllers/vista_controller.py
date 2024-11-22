@@ -44,7 +44,6 @@ def add_vista():  # noqa: E501
             nombre_vista=nombre, 
             contenidos_ids=contenidos
             )
-
     # Guardar el contenido en la base de datos
         db.session.add(new_vista)
         db.session.commit()
@@ -81,7 +80,6 @@ def delete_vista(id_vista):  # noqa: E501
         db.session.commit()
 
         return jsonify({'message': 'vista eliminada correctamente'}), 200
-
 
     except ValueError:
         # Devolver un error 400 si el ID proporcionado no es un número entero
@@ -275,7 +273,6 @@ def updatevista(id_vista):  # noqa: E501
         db.session.commit()
 
         return vista.to_dict(), 200
-
     except Exception as e:
         # Otro tipo de error
         return {"error": f"An error occurred: {str(e)}"}, 500  # Código 500: Error del servidor

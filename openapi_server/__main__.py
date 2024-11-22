@@ -25,7 +25,6 @@ app.app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
     'max_overflow': 5       # Conexiones extra que pueden crearse si se alcanza el pool_size
 }
 # hola 
-
 db = SQLAlchemy(app.app)
 
 import_db_controller(db)
