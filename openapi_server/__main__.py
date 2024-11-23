@@ -24,6 +24,7 @@ app.app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
     'pool_recycle': 180,   # Tiempo máximo de vida de una conexión (en segundos)
     'max_overflow': 5       # Conexiones extra que pueden crearse si se alcanza el pool_size
 }
+
 # hola 
 db = SQLAlchemy(app.app)
 
