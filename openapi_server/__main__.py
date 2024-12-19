@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-
+import os
 import connexion
 from openapi_server import encoder
 from flask_sqlalchemy import SQLAlchemy
@@ -16,7 +16,14 @@ app.add_api('openapi.yaml',
             arguments={'title': 'Microservicio de Contenidos de una aplicación de tipo Netflix'},
             pythonic_params=True)
 
-app.app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:12345@localhost:5432/Vistas'
+db_password = os.getenv('DB_PASSWORD')
+if not db_password:
+    raise ValueError("La contraseña de la base de datos no está configurada.")
+
+app.app.config['SQLALCHEMY_DATABASE_URI'] = (
+    f"postgresql://postgres:{db_password}@localhost:5432/Contenidos"
+)
+
 app.app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.app.config['SQLALCHEMY_ENGINE_OPTIONS'] = {
     'pool_size': 30,        # Tamaño máximo de conexiones en el pool
